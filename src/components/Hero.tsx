@@ -46,8 +46,10 @@ const Hero = () => {
           this.speedY = -this.speedY;
         }
         
-        // Pulsating size effect
-        this.size = this.size + Math.sin(Date.now() * 0.001) * 0.1;
+        // Fixed pulsating size effect to prevent negative values
+        const pulseFactor = Math.sin(Date.now() * 0.001) * 0.1;
+        // Ensure size is always positive
+        this.size = Math.max(0.5, this.size + pulseFactor);
       }
     }
     
@@ -55,7 +57,9 @@ const Hero = () => {
       ctx.globalAlpha = this.alpha;
       ctx.fillStyle = this.color;
       ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      // Ensure radius is never negative
+      const safeSize = Math.max(0.1, this.size);
+      ctx.arc(this.x, this.y, safeSize, 0, Math.PI * 2);
       ctx.fill();
     }
   }
