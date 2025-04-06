@@ -68,9 +68,9 @@ export default {
           ring: 'hsl(var(--sidebar-ring))'
         },
         agency: {
-          'blue': '#0F172A',
-          'teal': '#0D9488',
-          'coral': '#F97316',
+          'blue': '#0f0a08',
+          'teal': '#FF5E14',
+          'coral': '#FF8F50',
           'light': '#F8FAFC',
           'gray': '#64748B'
         }
@@ -97,17 +97,26 @@ export default {
           '0%': { opacity: '1', transform: 'translateY(0)' },
           '100%': { opacity: '0', transform: 'translateY(10px)' }
         },
+        'fade-in-right': {
+          '0%': { opacity: '0', transform: 'translateX(20px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' }
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in': 'fade-in 0.7s ease-out',
+        'fade-in-right': 'fade-in-right 0.5s ease-out',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        display: ['Poppins', 'sans-serif'],
+        display: ['Syne', 'sans-serif'],
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
     }
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+

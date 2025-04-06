@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Facebook, Twitter, Instagram, Linkedin, ArrowUp } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, ArrowUp, ArrowRight } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -11,81 +11,159 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-agency-blue text-white py-16">
-      <div className="container">
+    <footer className="bg-[#0a0705] text-white py-16 relative overflow-hidden">
+      {/* Grid background */}
+      <div className="absolute inset-0 grid-bg opacity-20"></div>
+      
+      {/* Radial gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0705] to-transparent"></div>
+      
+      {/* Geometric shapes */}
+      <div className="absolute top-20 left-20 w-40 h-40 rounded-full border border-[#FF5E14]/10 opacity-30"></div>
+      <div className="absolute bottom-40 right-20 w-60 h-60 rounded-full border border-[#FF8F50]/10 opacity-20"></div>
+      
+      <div className="container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
-            <div className="text-2xl font-display font-bold gradient-text mb-4">NOVA</div>
-            <p className="text-gray-300 mb-4">
+            <div className="text-2xl font-display font-bold gradient-text mb-4 flex items-center">
+              <span className="text-xs uppercase tracking-widest text-[#FF5E14] mr-2 mt-1 opacity-80">©</span>
+              FRANTIUM
+            </div>
+            <p className="text-gray-400 mb-4">
               We create digital experiences that elevate your business and connect with your audience in meaningful ways.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="bg-white/10 hover:bg-white/20 transition-colors p-2 rounded-full">
+              <a href="#" className="bg-white/5 hover:bg-[#FF5E14]/20 transition-colors p-2 rounded-full border border-white/10 hover:border-[#FF5E14]/30">
                 <Facebook size={18} />
               </a>
-              <a href="#" className="bg-white/10 hover:bg-white/20 transition-colors p-2 rounded-full">
+              <a href="#" className="bg-white/5 hover:bg-[#FF5E14]/20 transition-colors p-2 rounded-full border border-white/10 hover:border-[#FF5E14]/30">
                 <Twitter size={18} />
               </a>
-              <a href="#" className="bg-white/10 hover:bg-white/20 transition-colors p-2 rounded-full">
+              <a href="#" className="bg-white/5 hover:bg-[#FF5E14]/20 transition-colors p-2 rounded-full border border-white/10 hover:border-[#FF5E14]/30">
                 <Instagram size={18} />
               </a>
-              <a href="#" className="bg-white/10 hover:bg-white/20 transition-colors p-2 rounded-full">
+              <a href="#" className="bg-white/5 hover:bg-[#FF5E14]/20 transition-colors p-2 rounded-full border border-white/10 hover:border-[#FF5E14]/30">
                 <Linkedin size={18} />
               </a>
             </div>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-agency-teal transition-colors">Brand Strategy</a></li>
-              <li><a href="#" className="hover:text-agency-teal transition-colors">Web Development</a></li>
-              <li><a href="#" className="hover:text-agency-teal transition-colors">Mobile Apps</a></li>
-              <li><a href="#" className="hover:text-agency-teal transition-colors">Digital Marketing</a></li>
-              <li><a href="#" className="hover:text-agency-teal transition-colors">SEO Optimization</a></li>
+            <h4 className="text-lg font-semibold mb-4 text-white/80 uppercase tracking-wider text-sm">Services</h4>
+            <ul className="space-y-3 text-gray-400">
+              <li>
+                <a href="#" className="hover:text-[#FF5E14] transition-colors flex items-center group">
+                  <span className="w-0 group-hover:w-2 h-[1px] bg-[#FF5E14] mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                  Video Editing
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-[#FF5E14] transition-colors flex items-center group">
+                  <span className="w-0 group-hover:w-2 h-[1px] bg-[#FF5E14] mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                  Motion Graphics
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-[#FF5E14] transition-colors flex items-center group">
+                  <span className="w-0 group-hover:w-2 h-[1px] bg-[#FF5E14] mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                  Visual Effects
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-[#FF5E14] transition-colors flex items-center group">
+                  <span className="w-0 group-hover:w-2 h-[1px] bg-[#FF5E14] mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                  Color Grading
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-[#FF5E14] transition-colors flex items-center group">
+                  <span className="w-0 group-hover:w-2 h-[1px] bg-[#FF5E14] mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                  Graphic Design
+                </a>
+              </li>
             </ul>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Company</h4>
-            <ul className="space-y-2 text-gray-300">
-              <li><a href="#about" className="hover:text-agency-teal transition-colors">About Us</a></li>
-              <li><a href="#work" className="hover:text-agency-teal transition-colors">Our Work</a></li>
-              <li><a href="#" className="hover:text-agency-teal transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-agency-teal transition-colors">Blog</a></li>
-              <li><a href="#contact" className="hover:text-agency-teal transition-colors">Contact</a></li>
+            <h4 className="text-lg font-semibold mb-4 text-white/80 uppercase tracking-wider text-sm">Company</h4>
+            <ul className="space-y-3 text-gray-400">
+              <li>
+                <a href="#about" className="hover:text-[#FF5E14] transition-colors flex items-center group">
+                  <span className="w-0 group-hover:w-2 h-[1px] bg-[#FF5E14] mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="#work" className="hover:text-[#FF5E14] transition-colors flex items-center group">
+                  <span className="w-0 group-hover:w-2 h-[1px] bg-[#FF5E14] mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                  Our Work
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-[#FF5E14] transition-colors flex items-center group">
+                  <span className="w-0 group-hover:w-2 h-[1px] bg-[#FF5E14] mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                  Careers
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-[#FF5E14] transition-colors flex items-center group">
+                  <span className="w-0 group-hover:w-2 h-[1px] bg-[#FF5E14] mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-[#FF5E14] transition-colors flex items-center group">
+                  <span className="w-0 group-hover:w-2 h-[1px] bg-[#FF5E14] mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Newsletter</h4>
-            <p className="text-gray-300 mb-4">Subscribe to our newsletter to receive updates and industry insights.</p>
+            <h4 className="text-lg font-semibold mb-4 text-white/80 uppercase tracking-wider text-sm">Newsletter</h4>
+            <p className="text-gray-400 mb-4">Subscribe to our newsletter for creative insights and industry updates.</p>
             <form className="space-y-2">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="w-full bg-white/10 border border-white/20 rounded-md px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-agency-teal"
-              />
-              <button
-                type="submit"
-                className="w-full bg-agency-teal hover:bg-opacity-90 text-white font-medium py-2 px-4 rounded-md transition-colors"
-              >
-                Subscribe
-              </button>
+              <div className="relative">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  className="w-full bg-white/5 border border-white/10 rounded-md px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#FF5E14]/50 focus:ring-1 focus:ring-[#FF5E14]/30 transition-colors"
+                />
+                <button
+                  type="submit"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#FF5E14]/20 hover:bg-[#FF5E14]/30 text-white p-2 rounded-full transition-colors"
+                  aria-label="Subscribe"
+                >
+                  <ArrowRight size={16} />
+                </button>
+              </div>
+              <p className="text-xs text-gray-500">We respect your privacy. No spam, ever.</p>
             </form>
+            
+            <div className="mt-6 p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg">
+              <p className="text-sm text-white/70">Looking for a custom quote?</p>
+              <a 
+                href="#contact" 
+                className="text-[#FF5E14] hover:text-[#FF8F50] transition-colors flex items-center mt-1 text-sm font-medium"
+              >
+                Get in touch
+                <ArrowRight size={14} className="ml-1" />
+              </a>
+            </div>
           </div>
         </div>
         
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            &copy; {new Date().getFullYear()} Nova Creative Agency. All rights reserved.
+            &copy; {new Date().getFullYear()} Frantium Studio. All rights reserved.
           </p>
           <div className="flex mt-4 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-white text-sm mx-3">Privacy Policy</a>
-            <a href="#" className="text-gray-400 hover:text-white text-sm mx-3">Terms of Service</a>
+            <a href="#" className="text-gray-400 hover:text-[#FF5E14] text-xs uppercase tracking-wider mx-3 transition-colors">Privacy</a>
+            <a href="#" className="text-gray-400 hover:text-[#FF5E14] text-xs uppercase tracking-wider mx-3 transition-colors">Terms</a>
             <button 
               onClick={scrollToTop} 
-              className="ml-4 bg-agency-teal/20 hover:bg-agency-teal/30 transition-colors p-2 rounded-full"
+              className="ml-4 bg-white/5 hover:bg-[#FF5E14]/20 transition-colors p-2 rounded-full border border-white/10 hover:border-[#FF5E14]/30"
               aria-label="Back to top"
             >
               <ArrowUp size={18} />
