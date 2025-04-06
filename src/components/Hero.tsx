@@ -1,40 +1,45 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { ChevronDown, ArrowRight, X, Circle, Boxes } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({
+    x: 0,
+    y: 0
+  });
   const [isLoaded, setIsLoaded] = useState(false);
-  
+
   // Handle parallax mouse effect
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (heroRef.current) {
-        const { clientX, clientY } = e;
-        const { width, height } = heroRef.current.getBoundingClientRect();
-        
-        const x = (clientX / width) - 0.5;
-        const y = (clientY / height) - 0.5;
-        
-        setMousePosition({ x, y });
+        const {
+          clientX,
+          clientY
+        } = e;
+        const {
+          width,
+          height
+        } = heroRef.current.getBoundingClientRect();
+        const x = clientX / width - 0.5;
+        const y = clientY / height - 0.5;
+        setMousePosition({
+          x,
+          y
+        });
       }
     };
-    
     window.addEventListener('mousemove', handleMouseMove);
-    
+
     // Animation sequence
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
-    
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       clearTimeout(timer);
     };
   }, []);
-  
   const scrollToServices = () => {
     const servicesSection = document.getElementById("services");
     if (servicesSection) {
@@ -43,70 +48,70 @@ const Hero = () => {
       });
     }
   };
-  
+
   // Split text animation helper
-  const SplitText = ({ text, className = "", baseDelay = 0, step = 0.05 }) => {
-    return (
-      <span className={className}>
-        {text.split('').map((char, i) => (
-          <span 
-            key={i} 
-            className="char-animation inline-block"
-            style={{ 
-              animationDelay: `${baseDelay + i * step}s`,
-              display: char === ' ' ? 'inline' : 'inline-block'
-            }}
-          >
+  const SplitText = ({
+    text,
+    className = "",
+    baseDelay = 0,
+    step = 0.05
+  }) => {
+    return <span className={className}>
+        {text.split('').map((char, i) => <span key={i} className="char-animation inline-block" style={{
+        animationDelay: `${baseDelay + i * step}s`,
+        display: char === ' ' ? 'inline' : 'inline-block'
+      }}>
             {char === ' ' ? '\u00A0' : char}
-          </span>
-        ))}
-      </span>
-    );
+          </span>)}
+      </span>;
   };
 
   // Geometric decoration shapes that will move with parallax effect
-  const decorations = [
-    { type: 'circle', top: '15%', left: '10%', size: '120px', rotation: 0 },
-    { type: 'square', top: '25%', right: '8%', size: '100px', rotation: 15 },
-    { type: 'triangle', bottom: '20%', left: '15%', size: '80px', rotation: 45 },
-    { type: 'cross', bottom: '30%', right: '12%', size: '70px', rotation: 30 }
-  ];
-
-  return (
-    <section 
-      ref={heroRef}
-      className="relative min-h-screen flex items-center overflow-hidden bg-[#0f0a08] z-10"
-      style={{ 
-        backgroundImage: `radial-gradient(circle at ${50 + mousePosition.x * 5}% ${50 + mousePosition.y * 5}%, rgba(255,94,20,0.15) 0%, transparent 70%)`
-      }}
-    >
+  const decorations = [{
+    type: 'circle',
+    top: '15%',
+    left: '10%',
+    size: '120px',
+    rotation: 0
+  }, {
+    type: 'square',
+    top: '25%',
+    right: '8%',
+    size: '100px',
+    rotation: 15
+  }, {
+    type: 'triangle',
+    bottom: '20%',
+    left: '15%',
+    size: '80px',
+    rotation: 45
+  }, {
+    type: 'cross',
+    bottom: '30%',
+    right: '12%',
+    size: '70px',
+    rotation: 30
+  }];
+  return <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden bg-[#0f0a08] z-10" style={{
+    backgroundImage: `radial-gradient(circle at ${50 + mousePosition.x * 5}% ${50 + mousePosition.y * 5}%, rgba(255,94,20,0.15) 0%, transparent 70%)`
+  }}>
       {/* Geometric decoration elements */}
       {decorations.map((item, index) => {
-        const translateX = mousePosition.x * (15 + index * 5);
-        const translateY = mousePosition.y * (15 + index * 5);
-        
-        return (
-          <div 
-            key={index}
-            className="absolute geometric-shape opacity-20" 
-            style={{
-              top: item.top || 'auto',
-              left: item.left || 'auto',
-              right: item.right || 'auto',
-              bottom: item.bottom || 'auto',
-              width: item.size,
-              height: item.size,
-              transform: `translate(${translateX}px, ${translateY}px) rotate(${item.rotation}deg)`,
-              transition: 'transform 0.1s ease-out',
-              border: item.type === 'circle' ? `2px solid rgba(255,94,20,0.5)` : 
-                     item.type === 'square' ? `2px solid rgba(255,143,80,0.5)` : 
-                     item.type === 'triangle' ? `2px solid rgba(255,94,20,0.5)` : 
-                     `2px solid rgba(255,143,80,0.5)`,
-              borderRadius: item.type === 'circle' ? '50%' : '0%'
-            }}
-          />
-        );
-      })}
+      const translateX = mousePosition.x * (15 + index * 5);
+      const translateY = mousePosition.y * (15 + index * 5);
+      return <div key={index} className="absolute geometric-shape opacity-20" style={{
+        top: item.top || 'auto',
+        left: item.left || 'auto',
+        right: item.right || 'auto',
+        bottom: item.bottom || 'auto',
+        width: item.size,
+        height: item.size,
+        transform: `translate(${translateX}px, ${translateY}px) rotate(${item.rotation}deg)`,
+        transition: 'transform 0.1s ease-out',
+        border: item.type === 'circle' ? `2px solid rgba(255,94,20,0.5)` : item.type === 'square' ? `2px solid rgba(255,143,80,0.5)` : item.type === 'triangle' ? `2px solid rgba(255,94,20,0.5)` : `2px solid rgba(255,143,80,0.5)`,
+        borderRadius: item.type === 'circle' ? '50%' : '0%'
+      }} />;
+    })}
       
       {/* Grid overlay */}
       <div className="absolute inset-0 grid-bg opacity-30 z-[-1]"></div>
@@ -120,27 +125,21 @@ const Hero = () => {
       </div>
       
       {/* Abstract elements */}
-      <div 
-        className="absolute top-20 right-20 hidden lg:block"
-        style={{
-          transform: `translate(${mousePosition.x * -30}px, ${mousePosition.y * -30}px)`,
-          transition: 'transform 0.1s ease-out'
-        }}
-      >
+      <div className="absolute top-20 right-20 hidden lg:block" style={{
+      transform: `translate(${mousePosition.x * -30}px, ${mousePosition.y * -30}px)`,
+      transition: 'transform 0.1s ease-out'
+    }}>
         <Circle className="text-[#FF5E14] opacity-20" size={80} />
       </div>
       
-      <div 
-        className="absolute bottom-40 left-40 hidden lg:block"
-        style={{
-          transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`,
-          transition: 'transform 0.1s ease-out'
-        }}
-      >
+      <div className="absolute bottom-40 left-40 hidden lg:block" style={{
+      transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`,
+      transition: 'transform 0.1s ease-out'
+    }}>
         <Boxes className="text-[#FF8F50] opacity-20" size={100} />
       </div>
       
-      <div className="container-tight relative z-10">
+      <div className="container-tight relative z-10 rounded-lg">
         {/* Small brand indicator that appears first */}
         <div className={`transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
           <span className="inline-block px-4 py-2 rounded-full bg-white/5 text-white border border-white/10 text-sm font-medium mb-6 backdrop-blur-sm">
@@ -159,10 +158,9 @@ const Hero = () => {
               <span className="block h-[1px] w-20 bg-[#FF5E14]/50 mt-2"></span>
             </h3>
 
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 leading-none reveal-text"
-              style={{
-                textShadow: '0 0 40px rgba(255,94,20,0.3)'
-              }}>
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 leading-none reveal-text" style={{
+            textShadow: '0 0 40px rgba(255,94,20,0.3)'
+          }}>
               <span className={`block transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 Visual
               </span>
@@ -183,19 +181,12 @@ const Hero = () => {
             </p>
 
             <div className={`flex flex-wrap gap-4 transition-all duration-1000 delay-1300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-[#FF5E14] to-[#FF8F50] hover:opacity-90 transition-all text-base px-8 py-6 font-bold text-white shadow-lg shadow-[#FF5E14]/20 hover:shadow-xl hover:shadow-[#FF5E14]/30 group"
-              >
+              <Button size="lg" className="bg-gradient-to-r from-[#FF5E14] to-[#FF8F50] hover:opacity-90 transition-all text-base px-8 py-6 font-bold text-white shadow-lg shadow-[#FF5E14]/20 hover:shadow-xl hover:shadow-[#FF5E14]/30 group">
                 View Our Work
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-2 border-white/20 bg-black/10 backdrop-blur-md hover:bg-white/5 text-base px-8 py-6 text-white transform hover:-translate-y-1 transition-all"
-              >
+              <Button variant="outline" size="lg" className="border-2 border-white/20 bg-black/10 backdrop-blur-md hover:bg-white/5 text-base px-8 py-6 text-white transform hover:-translate-y-1 transition-all">
                 Get in Touch
               </Button>
             </div>
@@ -203,30 +194,22 @@ const Hero = () => {
           
           {/* Right image section - semi-transparent portrait */}
           <div className={`relative flex-1 transition-all duration-1000 delay-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div 
-              className="relative h-[500px] w-full lg:w-[500px]"
-              style={{ 
-                transform: `translate(${mousePosition.x * 20}px, ${mousePosition.y * 20}px)`,
-                transition: 'transform 0.2s ease-out'
-              }}
-            >
+            <div className="relative h-[500px] w-full lg:w-[500px]" style={{
+            transform: `translate(${mousePosition.x * 20}px, ${mousePosition.y * 20}px)`,
+            transition: 'transform 0.2s ease-out'
+          }}>
               <div className="absolute inset-0 overflow-hidden rounded-2xl">
-                <img 
-                  src="/lovable-uploads/e30ce2fe-36f1-4197-b7aa-df696134172b.png" 
-                  alt="Creative portrait" 
-                  className="w-full h-full object-cover image-reveal"
-                  style={{
-                    animationDelay: '0.8s',
-                    filter: 'contrast(1.1) brightness(0.85)'
-                  }}
-                />
+                <img src="/lovable-uploads/e30ce2fe-36f1-4197-b7aa-df696134172b.png" alt="Creative portrait" className="w-full h-full object-cover image-reveal" style={{
+                animationDelay: '0.8s',
+                filter: 'contrast(1.1) brightness(0.85)'
+              }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f0a08] via-transparent to-transparent opacity-90"></div>
                 <div className="absolute inset-0 video-lines-effect"></div>
               </div>
               
               {/* Creative elements overlaid on the image */}
               <div className="absolute top-10 right-10 bg-white/10 backdrop-blur-md p-3 rounded-full">
-                <X className="text-[#FF5E14]" size={20} />
+                
               </div>
               
               <div className="absolute bottom-10 left-10 bg-white/10 backdrop-blur-md p-4 rounded-lg">
@@ -263,16 +246,10 @@ const Hero = () => {
           </div>
         </div>
         
-        <button 
-          onClick={scrollToServices} 
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-white/5 backdrop-blur-sm p-3 rounded-full border border-white/10 animate-bounce mt-16 group"
-          aria-label="Scroll down"
-        >
-          <ChevronDown className="text-white group-hover:text-[#FF5E14] transition-colors" size={24} />
+        <button onClick={scrollToServices} className="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-white/5 backdrop-blur-sm p-3 rounded-full border border-white/10 animate-bounce mt-16 group" aria-label="Scroll down">
+          <ChevronDown size={24} className="text-white group-hover:text-[#FF5E14] transition-colors px-0 py-54 mx-0 my-0" />
         </button>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
