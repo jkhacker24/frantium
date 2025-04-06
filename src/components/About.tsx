@@ -1,17 +1,20 @@
-
 import React from "react";
 import { Check } from "lucide-react";
-
 const About = () => {
-  const stats = [
-    { value: "8+", label: "Years Experience" },
-    { value: "100+", label: "Projects Completed" },
-    { value: "96%", label: "Client Satisfaction" },
-    { value: "24", label: "Team Members" },
-  ];
-
-  return (
-    <section id="about" className="section bg-gray-50">
+  const stats = [{
+    value: "8+",
+    label: "Years Experience"
+  }, {
+    value: "100+",
+    label: "Projects Completed"
+  }, {
+    value: "96%",
+    label: "Client Satisfaction"
+  }, {
+    value: "24",
+    label: "Team Members"
+  }];
+  return <section id="about" className="section bg-gray-50">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1">
@@ -27,22 +30,18 @@ const About = () => {
               </div>
               <div className="absolute top-1/2 -right-6 transform translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-lg animate-on-scroll">
                 <div className="grid grid-cols-2 gap-4">
-                  {stats.map((stat, index) => (
-                    <div key={index} className="text-center">
+                  {stats.map((stat, index) => <div key={index} className="text-center">
                       <div className="text-2xl md:text-3xl font-bold text-agency-teal">{stat.value}</div>
                       <div className="text-sm text-agency-gray">{stat.label}</div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
             </div>
           </div>
           
           <div className="order-1 lg:order-2">
-            <h5 className="text-agency-teal uppercase tracking-wider font-medium mb-4 animate-on-scroll">
-              About Nova
-            </h5>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-on-scroll">
+            <h5 className="text-agency-teal uppercase tracking-wider font-medium mb-4 animate-on-scroll">ABOUT Frantium</h5>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-on-scroll text-zinc-800">
               A <span className="gradient-text">Creative Agency</span> That Delivers Results
             </h2>
             <p className="text-lg text-agency-gray mb-8 animate-on-scroll">
@@ -50,14 +49,12 @@ const About = () => {
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-              {["Strategic Thinking", "Creative Excellence", "Technical Expertise", "Results-Driven"].map((item, index) => (
-                <div key={index} className="flex items-center space-x-2 animate-on-scroll">
+              {["Strategic Thinking", "Creative Excellence", "Technical Expertise", "Results-Driven"].map((item, index) => <div key={index} className="flex items-center space-x-2 animate-on-scroll">
                   <div className="bg-agency-teal/10 p-1 rounded-full">
                     <Check className="h-5 w-5 text-agency-teal" />
                   </div>
-                  <span className="font-medium">{item}</span>
-                </div>
-              ))}
+                  <span className="font-medium text-zinc-800">{item}</span>
+                </div>)}
             </div>
             
             <a href="#contact" className="btn-primary inline-block animate-on-scroll">
@@ -66,8 +63,6 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;

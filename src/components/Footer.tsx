@@ -1,7 +1,5 @@
-
 import React from "react";
 import { Facebook, Twitter, Instagram, Linkedin, ArrowUp, ArrowRight } from "lucide-react";
-
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -9,9 +7,7 @@ const Footer = () => {
       behavior: "smooth"
     });
   };
-
-  return (
-    <footer className="bg-[#0a0705] text-white py-16 relative overflow-hidden">
+  return <footer className="bg-[#0a0705] text-white py-16 relative overflow-hidden">
       {/* Grid background */}
       <div className="absolute inset-0 grid-bg opacity-20"></div>
       
@@ -85,68 +81,34 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white/80 uppercase tracking-wider text-sm">Company</h4>
+            
             <ul className="space-y-3 text-gray-400">
               <li>
-                <a href="#about" className="hover:text-[#FF5E14] transition-colors flex items-center group">
-                  <span className="w-0 group-hover:w-2 h-[1px] bg-[#FF5E14] mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                  About Us
-                </a>
+                
               </li>
               <li>
-                <a href="#work" className="hover:text-[#FF5E14] transition-colors flex items-center group">
-                  <span className="w-0 group-hover:w-2 h-[1px] bg-[#FF5E14] mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                  Our Work
-                </a>
+                
               </li>
               <li>
-                <a href="#" className="hover:text-[#FF5E14] transition-colors flex items-center group">
-                  <span className="w-0 group-hover:w-2 h-[1px] bg-[#FF5E14] mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                  Careers
-                </a>
+                
               </li>
               <li>
-                <a href="#" className="hover:text-[#FF5E14] transition-colors flex items-center group">
-                  <span className="w-0 group-hover:w-2 h-[1px] bg-[#FF5E14] mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                  Blog
-                </a>
+                
               </li>
               <li>
-                <a href="#contact" className="hover:text-[#FF5E14] transition-colors flex items-center group">
-                  <span className="w-0 group-hover:w-2 h-[1px] bg-[#FF5E14] mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                  Contact
-                </a>
+                
               </li>
             </ul>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white/80 uppercase tracking-wider text-sm">Newsletter</h4>
-            <p className="text-gray-400 mb-4">Subscribe to our newsletter for creative insights and industry updates.</p>
-            <form className="space-y-2">
-              <div className="relative">
-                <input
-                  type="email"
-                  placeholder="Your email address"
-                  className="w-full bg-white/5 border border-white/10 rounded-md px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#FF5E14]/50 focus:ring-1 focus:ring-[#FF5E14]/30 transition-colors"
-                />
-                <button
-                  type="submit"
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#FF5E14]/20 hover:bg-[#FF5E14]/30 text-white p-2 rounded-full transition-colors"
-                  aria-label="Subscribe"
-                >
-                  <ArrowRight size={16} />
-                </button>
-              </div>
-              <p className="text-xs text-gray-500">We respect your privacy. No spam, ever.</p>
-            </form>
+            
+            
+            
             
             <div className="mt-6 p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg">
               <p className="text-sm text-white/70">Looking for a custom quote?</p>
-              <a 
-                href="#contact" 
-                className="text-[#FF5E14] hover:text-[#FF8F50] transition-colors flex items-center mt-1 text-sm font-medium"
-              >
+              <a href="#contact" className="text-[#FF5E14] hover:text-[#FF8F50] transition-colors flex items-center mt-1 text-sm font-medium">
                 Get in touch
                 <ArrowRight size={14} className="ml-1" />
               </a>
@@ -161,18 +123,12 @@ const Footer = () => {
           <div className="flex mt-4 md:mt-0">
             <a href="#" className="text-gray-400 hover:text-[#FF5E14] text-xs uppercase tracking-wider mx-3 transition-colors">Privacy</a>
             <a href="#" className="text-gray-400 hover:text-[#FF5E14] text-xs uppercase tracking-wider mx-3 transition-colors">Terms</a>
-            <button 
-              onClick={scrollToTop} 
-              className="ml-4 bg-white/5 hover:bg-[#FF5E14]/20 transition-colors p-2 rounded-full border border-white/10 hover:border-[#FF5E14]/30"
-              aria-label="Back to top"
-            >
+            <button onClick={scrollToTop} className="ml-4 bg-white/5 hover:bg-[#FF5E14]/20 transition-colors p-2 rounded-full border border-white/10 hover:border-[#FF5E14]/30" aria-label="Back to top">
               <ArrowUp size={18} />
             </button>
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
