@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -197,9 +196,9 @@ const Index = () => {
     <div className="min-h-screen overflow-x-hidden">
       <Navbar />
       <Hero />
+      <Work />
       <Services />
       <About />
-      <Work />
       <Contact />
       <Footer />
     </div>
